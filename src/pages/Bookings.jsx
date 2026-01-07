@@ -1,13 +1,17 @@
-import BookingsTableOperations from "../ui/BookingsTableOperations";
+import BookingsTableOperations from "../features/bookings/BookingTableOperations";
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
+import BookingTable from "../features/bookings/BookingTable";
 
 function Bookings() {
   return (
-    <Row type="horizontal">
-      <Heading as="h1">All bookings</Heading>
-      <BookingsTableOperations>TEST</BookingsTableOperations>
-    </Row>
+    <>
+      <Row type="horizontal">
+        <Heading as="h1">All bookings</Heading>
+        <BookingsTableOperations />
+      </Row>
+      <BookingTable />
+    </>
   );
 }
 
