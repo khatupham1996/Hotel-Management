@@ -10,6 +10,11 @@ import { Toaster } from "react-hot-toast";
 import Settings from "./pages/Settings";
 import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
+import Users from "../src/pages/Users";
+import Account from "../src/pages/Account";
+import Login from "./pages/Login";
+import ProtectedRoute from "./ui/ProtectedRoute";
+
 function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
@@ -25,7 +30,13 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
@@ -33,14 +44,12 @@ function App() {
             <Route path="cabins" element={<Cabins />} />
             <Route path="settings" element={<Settings />} />
             <Route path="checkin/:bookingId" element={<Checkin />} />
-            {/* <Route path="bookings/:bookingId" element={<Booking />} />
-            <Route path="checkin/:bookingId" element={<Checkin />} />
-          
-            <Route path="cabins" element={<Cabins />} />
+
             <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />
-            <Route path="account" element={<Account />} />  */}
+            <Route path="account" element={<Account />} />
           </Route>
+          <Route path="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
       <Toaster
